@@ -1,0 +1,41 @@
+
+h3
+{
+  color : white;
+  text-align : centre;
+  font-family: verdana;
+  font-size: 20px;
+}
+nav
+{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 8%;
+  display: flex;
+  align-items: centre;
+  justify-content: space-between;
+
+}
+nav .logo
+{
+    width: 80px;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 40px;
+
+
+}
+nav ul li a
+{
+  text-decoration: none;
+  color: rgb(22, 20, 20);
+  margin-left:20px;
+  box-decoration-break: slice;
+  font-size: 25px;
+  text-align:right;
+}
+

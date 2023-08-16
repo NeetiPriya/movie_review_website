@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="horror.css">
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <button ng-click="myFunc()">DISCLAIMER</button>
+        
+        <class ng-show="showMe">
+            <class id="h">
+         <h1><br>  <em> <b>The story, all names, characters, and incidents portrayed in this production are fictitious. No identification with actual persons (living or deceased), places, buildings, and products is intended or should be inferred.</p></em></h1>
+            <em>  <h1>Disclaimer:</h1>
+            <ul>
+           <li><div>Children above age 7</div></li>
+           <li><div>May have Adultered content </div></li>
+           <li><div>Review before watching</div></li></ul></em>
+        </class>
+        </div>
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.showMe = false;
+            $scope.myFunc = function() {
+                $scope.showMe = !$scope.showMe;
+            }
+        });
+        </script>
+    
+
+<h1>Horror movies: </h1><br>
+<div class="container-fluid">
+    <div class="container">
+        <div class="search">
+
+            
+            <input type="text" name="" id="find" placeholder="search here...." onkeyup="search()">
+<div ng-app="" ng-init="firstName='...'"></div></div></div></div>
+<br>
+<img src="/Users/neetipriya/Desktop/SSN/SEM VI/reveiwer/movie/.vscode/h1.jpg" width="250px" height="250px">
+    <h3>The world is beset by the appearance of monstrous creatures, but one of them may be the only one who can save humanity.</h3>
+   
+</div>
+
+<img src="/Users/neetipriya/Desktop/SSN/SEM VI/reveiwer/movie/.vscode/h3.jpg"  width="250px" height="250px">
+
+    <h3>A young man finds himself in a dangerous mind state between reality and his own nightmares stuck far within the fjords of Norway with his old grandmother.</h3>
+   
+</div>
+
+<img src="/Users/neetipriya/Desktop/SSN/SEM VI/reveiwer/movie/.vscode/h4.jpg"  width="250px" height="250px">
+
+    <h3>An ex-convict discovers twisted horrors inside a dilapidated house after taking a job as a handyman.</h3>
+   
+</div>
+
+<img src="/Users/neetipriya/Desktop/SSN/SEM VI/reveiwer/movie/.vscode/h5.jpg" width="250px" height="250px">
+    <h3>A husband and wife who recently lost their baby adopt a 9-year-old girl who is not nearly as innocent as she appears.</h3>
+   
+</div>
+
+<img src="/Users/neetipriya/Desktop/SSN/SEM VI/reveiwer/movie/.vscode/h6.jpg" width="250px" height="250px">
+    <h3>The Pope's Exorcist is a 2023 American supernatural horror film directed by Julius Avery from a screenplay by Michael Petroni and Evan Spiliotopoulos</h3>
+   
+</div>
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.showMe = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+    }
+});
+</script>
+
+</body>
+</html>

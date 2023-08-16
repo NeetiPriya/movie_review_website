@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Video Player</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			background-color: #eb9181;
+            text-align: left;
+		}
+
+		button {
+			background-color: rgb(226, 161, 161);
+			font-size: 17px;
+			border: 10px solid transparent;
+		}
+	</style>
+    <style>
+        div {
+          transition: all linear 0.5s;
+          background-color: #d9978e;
+          height: 100px;
+          width: 100%;
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+        
+        .ng-hide {
+          height: 0;
+          width: 0;
+          background-color: transparent;
+          top:-200px;
+          left: 200px;
+        }
+        table, th, td {
+ 			 border:1px solid black;}
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+        
+</head>
+
+
+
+<body ng-app="myApp">
+
+    <h2>COPYRIGHTS !! <input type="checkbox" ng-model="myCheck"></h2>
+    
+    <div ng-hide="myCheck"><p>Copyright laws protect the rights of creators of original works, including movies.This movie is copyrighted</p>
+    </div>
+    
+    <script>
+    var app = angular.module('myApp', ['ngAnimate']);
+    </script>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<center><b style="font-size:35px; color:#212727;"><u>UPCOMING MOVIES TRAILER</u></b></center>
+	<div style="padding:7px">
+		<center>
+			<video id="vid" height="470" width="810" style="border:7px solid #2b2f2f; background-color:black">
+				<source src="badguys.mp4" type="video/mp4">
+			</video>
+		</center><br>
+		<center>
+			<button id="ply" ng-click="vid_back()"><i class="fa fa-backward"></i></button>
+			<button id="ply" ng-click="vid_play()"><i class="fa fa-play"></i><b>/</b><i
+					class="fa fa-pause"></i></button>
+			<button id="ply" ng-click="vid_forw()"><i class="fa fa-forward"></i></button>
+			<button ng-click="vid_stop()"><i class="fa fa-stop"></i></button>
+			<button ng-click="mute()"><i class="fa fa-volume-off"></i></button>
+			<button ng-click="unmute()"><i class="fa fa-volume-up"></i></button>
+            <br><br>
+            <table style="width:80%">
+				<tr>
+				  <td>MOVIE NAME:</td>
+				  <td>BAD GUYS</td><br>
+				  <td>PRODUCER:</td>
+				  <td>SHARMA</td>
+				  
+				</tr>
+				<tr>
+				  <td>CO-ACTRESS:</td>
+				  <td>LEONARDO ,BETTE DAVIS</td>
+				  <td>DIRECTOR:</td>
+				  <td>MARTIN SCROSCESE</td>
+				  
+				</tr>
+			  </table>
+			  <br><br>
+           <h2><b>John Wick (Keanu Reeves) uncovers a path to defeating the High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes..</b></h2> 
+		<br></br>
+		</center>
+</div>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function ($scope) {
+			var vid = document.getElementById("vid");
+			var flag = 0
+			$scope.vid_play = function () {
+				if (flag == 0) {
+					vid.play();
+					flag = 1;
+				}
+				else {
+					vid.pause();
+					flag = 0;
+				}
+			}
+			$scope.vid_stop = function () {
+				vid.pause();
+				vid.currentTime = 0;
+			}
+			$scope.vid_forw = function () {
+				vid.currentTime = vid.currentTime + 10;
+			}
+			$scope.vid_back = function () {
+				vid.currentTime = vid.currentTime - 10;
+			}
+			$scope.mute = function () {
+				vid.muted = true;
+			}
+			$scope.unmute = function () {
+				vid.muted = false;
+			}
+		});
+	</script>
+</body>
+
+</html>

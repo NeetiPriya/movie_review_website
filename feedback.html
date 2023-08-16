@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="text.js"></script>
+    <title>Feedback</title>
+    <style>
+        body
+{
+    background-image: linear-gradient(to right, rgb(208, 155, 140) , rgb(230, 220, 214));
+
+}
+    </style>
+</head>
+
+<body ng-app="texteditor" ng-controller="textCtrl">
+    <div class="title">
+        <br> 
+      <em><h2>You can provide feedback for this website or can upload files if you wish to.....</h2></em>
+    </div>
+    <br> </br>
+    <div class="features">
+        <em><button class="button" ng-click="newFile()">New File</button></em>
+        <em></em><button class="button" ng-click="loadFile()">Load File</button></em>
+        <em></em><button class="button" ng-click="saveFile()">Save File</button></em>
+        <em> <button class="button" ng-click="cutFile()">Cut</button></em>
+        <em> <button class="button" ng-click="copyFile()">Copy</button></em>
+        <em> <button class="button" ng-click="pasteFile()">Paste</button></em>
+        <em> <button class="button" ng-click="exitFile()">Exit</button></em>
+    </div>
+    <div class="filename">
+        <form>
+            <div ng-show="newIsVisible">
+                <em><label for="filename">FILE NAME : </label></em>
+                <input class="textinput" type="text" ng-model="filename" placeholder="Enter your file name">
+                <br><br>
+                <!-- <p style="font-size: 15px;"><em>*When you create a new file the old contents along with the name will be lost. Each time you create a new file, you give it a name and enter the content.</em></p> -->
+            </div> 
+            <div ng-show="loadIsVisible">
+                <em><label for="filename">UPLOAD NAME : </label></em>
+                <input type="file" id="fileInput">
+                <br><br>
+                <!-- <p style="font-size: 15px;"><em>*Choose the required file and again click on load file to display the contents of the file in the textarea.</em></p> -->
+            </div>
+            <br><br>
+            <textarea ng-show="isVisible" id="content" ng-model="content" cols="150" rows="25"></textarea>
+        </form>
+        <p class="exitmessage">{{ message }}</p>
+    </div>
+</body>
+<script>
+    var app = angular.module('texteditor', []);
+
+app.controller('textCtrl', function ($scope) {
+    $scope.newIsVisible = false;
+    $scope.loadIsVisible = false;
+    $scope.isVisible = false;
+
+    $scope.newFile = function () {
+        console.log("New File Button Clicked");
+        $scope.content = "";
+        $scope.filename = "";
+        $scope.newIsVisible = $scope.newIsVisible = true;
+        $scope.loadIsVisible = $scope.loadIsVisible = false;
+        $scope.isVisible = $scope.isVisible = true;
+        $scope.message = "";
+    }
+
+
+    $scope.loadFile = function () {
+        $scope.loadFile = function () {
+            var input = document.getElementById("fileInput");
+            var file = input.files[0];
+            var reader = new FileReader();
+            reader.onload = function () {
+                $scope.$apply(function () {
+                    $scope.content = reader.result;
+                });
+            };
+            reader.readAsText(file);
+        };
+        $scope.loadIsVisible = $scope.loadIsVisible = true;
+        $scope.newIsVisible = $scope.newIsVisible = false;
+        $scope.isVisible = $scope.isVisible = true
+        $scope.message = "";
+    }
+
+    $scope.saveFile = function () {
+        const text = $scope.content;
+        const blob = new Blob([text], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = $scope.filename;
+        a.click();
+    }
+
+    $scope.cutFile = function () {
+        console.log("Cut File Button Clicked");
+        $scope.content = "";
+    }
+
+    $scope.copyFile = function () {
+        $scope.content = "I didn't do the copy and paste part."
+        $scope.isVisible = $scope.isVisible = true
+    }
+
+    $scope.pasteFile = function () {
+        $scope.content = "I didn't do the copy and paste part."
+        $scope.isVisible = $scope.isVisible = true
+    }
+
+    $scope.exitFile = function () {
+        $scope.loadIsVisible = $scope.loadIsVisible = false;
+        $scope.newIsVisible = $scope.newIsVisible = false;
+        $scope.isVisible = $scope.isVisible = false;
+        $scope.message = "ThankYou for using Angular Text Editor"
+    }
+
+});
+</script>
+
+</html>
+
